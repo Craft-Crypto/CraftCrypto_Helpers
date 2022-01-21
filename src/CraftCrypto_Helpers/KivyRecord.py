@@ -1,5 +1,5 @@
 from kivy.event import EventDispatcher
-from BaseRecord import BaseRecord
+from .BaseRecord import BaseRecord
 
 
 class KivyRecord(EventDispatcher):
