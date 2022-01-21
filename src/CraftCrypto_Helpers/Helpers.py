@@ -10,6 +10,11 @@ import json
 dir_path = 'test'
 
 
+def set_dir_path(new_path):
+    global dir_path
+    dir_path = new_path
+
+
 class My_Exchange():
     def __init__(self, name, **kwargs):
         super(My_Exchange, self).__init__()
