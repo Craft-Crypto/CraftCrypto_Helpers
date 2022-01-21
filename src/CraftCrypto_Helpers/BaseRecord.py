@@ -131,3 +131,83 @@ class BaseRecord:
     psar_cross_buy: bool = False
     psar_cross_sell: bool = False
 
+
+def convert_record(old_rec):
+    # This converts the old style records into new records.
+    '''
+    class Record(EventDispatcher):
+        def __init__(self, **kwargs):
+            self.trigs = ['ema', 'ema_buy', 'ema_sell', 'ema_cross_fast', 'ema_cross_slow', 'ema_cross_buy',
+                          'ema_cross_sell', 'sma', 'sma_buy', 'ema_percent', 'sma_percent',
+                          'sma_sell', 'sma_cross_fast', 'sma_cross_slow', 'sma_cross_buy', 'sma_cross_sell',
+                          'ema_sma_cross_fast', 'ema_sma_cross_slow', 'ema_sma_cross_buy',
+                          'ema_sma_cross_sell', 'rsi_buy', 'rsi_sell', 'bb_buy', 'bb_sell', 'macd_cross_buy',
+                          'macd_cross_sell', 'macd_0_buy', 'macd_0_sell', 'macd_color_buy', 'macd_color_sell',
+                          'stoch_cross_buy', 'stoch_cross_sell', 'stoch_val_buy', 'stoch_val_sell', 'psar_cross_buy',
+                          'psar_cross_sell',
+                          'sell_per', 'stop_per', 'trail_per', 'dca_buyback_per',
+                          ]
+
+            self.base = ['symbol', 'coin', 'pair', 'nope_coin', 'candle', 'pair_per', 'pair_amt', 'pair_minmult',
+                         'exchange', 'ex_icon', 'my_id', 'coin_min', 'pair_min', 'kind', 'side', 'leverage',
+                         'trade_id', 'buy_trade_id', 'sell_trade_id', 'check_rate']
+
+            self.trade_data = ['gl_per', 'ema_val', 'ema_cross_val_fast', 'ema_cross_val_slow', 'sma_val',
+                               'sma_cross_val_fast',
+                               'sma_cross_val_slow', 'ema_sma_cross_val_fast', 'ema_sma_cross_val_slow', 'rsi_val',
+                               'bb_width_val', 'bb_under_val', 'bb_over_val', 'close_diff_val', 'macd_val',
+                               'macd_signal_val',
+                               'k_val', 'd_val', 'psar_val', 'sellover', 'status', 'enable_buy', 'error',
+                               'last_update', 'trade_vol', 'prec', 'sell_price', 'buy_price', 'stop_price',
+                               'trail_price',
+                               'buy_price', 'sold_price', 'amount', 'now_price', 'coin_bal', 'pair_bal', 'average_buys',
+                               'average_sells', 'dca', 'buyback_price', 'last_price', 'last_buy_price', 'indicators',
+                               'trade_vol', 'trade_price', 'per_gain', 'num_trades', 'num_buys', 'num_sells', 'buy_vol',
+                               'sell_vol', 'price'
+                               ]
+
+            self.create_property('childs', value=[])
+
+            self.trues = ['active', 'ready_sell', 'sold', 'selected', 'sell_now', 'buy_now', 'verified', 'very_sent',
+                          'is_stop', 'buy_enabled', 'sell_enabled']
+
+            for key in self.base:
+                self.create_property(key, value='')
+
+            for key in self.trigs:
+                self.create_property(key, value='')
+
+            for key in self.trade_data:
+                self.create_property(key, value='')
+
+            for key in self.trues:
+                self.create_property(key, value=False)
+
+
+    '''
+    new_rec = BaseRecord()
+    for dd in old_rec:
+        if dd in ['ema_buy', 'ema_sell', 'sma_buy', 'sma_sell', 'ema_cross_buy', 'ema_cross_sell', 'sma_cross_buy',
+                  'sma_cross_sell', 'ema_sma_cross_buy', 'ema_sma_cross_sell']:
+            if old_rec[dd] == 'Yes':
+                setattr(new_rec, dd, True)
+            else:
+                setattr(new_rec, dd, False)
+        elif dd == 'prec':
+            setattr(new_rec, 'precision', old_rec[dd])
+        elif dd == 'coin_min':
+            setattr(new_rec, 'coin_min_trade', old_rec[dd])
+        elif dd == 'pair_min':
+            setattr(new_rec, 'cost_min_trade', old_rec[dd])
+        elif dd == 'sell_per':
+            setattr(new_rec, 'take_profit_per', old_rec[dd])
+        elif dd == 'sell_price':
+            setattr(new_rec, 'take_profit_price', old_rec[dd])
+        elif dd == 'buyback_price':
+            setattr(new_rec, 'dca_buyback_price', old_rec[dd])
+        elif dd == 'childs':
+            setattr(new_rec, 'children', old_rec[dd])
+        else:
+            setattr(new_rec, dd, old_rec[dd])
+
+    return new_rec
