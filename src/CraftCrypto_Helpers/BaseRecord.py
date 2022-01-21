@@ -131,6 +131,13 @@ class BaseRecord:
     psar_cross_buy: bool = False
     psar_cross_sell: bool = False
 
+    def set_record(self, rec):
+        for key in rec:
+            try:
+                setattr(self, key, rec[key])
+            except Exception as e:
+                print('Error setting', key, e)
+
 
 def convert_record(old_rec):
     # This converts the old style records into new records.
