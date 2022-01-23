@@ -17,6 +17,8 @@ class BaseRecord:
     active: bool = False
     sold: bool = False
     error: str = ''
+    title: str = ''
+    description: str = ''
     last_update: str = ''
 
     # Amount to Buy
