@@ -62,6 +62,7 @@ class BaseRecord:
     average_buys: str = '0'
     average_sells: str = '0'
     average_per_gain: str = '0'
+    last_evaluated_price: str = '0'
     num_trades: str = '0'
     num_buys: str = '0'
     num_sells: str = '0'
