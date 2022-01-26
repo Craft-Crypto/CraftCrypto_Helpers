@@ -19,6 +19,7 @@ class BaseRecord:
     error: str = ''
     title: str = ''
     description: str = ''
+    strat_index: str = ''
     last_update: str = ''
 
     # Amount to Buy
