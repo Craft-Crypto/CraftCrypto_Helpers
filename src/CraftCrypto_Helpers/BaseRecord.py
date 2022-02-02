@@ -128,8 +128,8 @@ class BaseRecord:
 
     stoch_k_val: str = ''
     stoch_d_val: str = ''
-    stoch_val_buy: bool = False
-    stoch_val_sell: bool = False
+    stoch_val_buy: str = ''
+    stoch_val_sell: str = ''
 
     psar_val: str = ''
     psar_cross_buy: bool = False
