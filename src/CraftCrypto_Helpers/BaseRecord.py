@@ -204,6 +204,8 @@ def convert_record(old_rec):
                 setattr(new_rec, dd, True)
             else:
                 setattr(new_rec, dd, False)
+        elif dd == 'amount':
+            setattr(new_rec, 'trade_amount', old_rec[dd])
         elif dd == 'prec':
             setattr(new_rec, 'precision', old_rec[dd])
         elif dd == 'coin_min':
@@ -216,8 +218,6 @@ def convert_record(old_rec):
             setattr(new_rec, 'take_profit_price', old_rec[dd])
         elif dd == 'buyback_price':
             setattr(new_rec, 'dca_buyback_price', old_rec[dd])
-        # elif dd == 'childs':
-        #     setattr(new_rec, 'children', old_rec[dd])
         else:
             setattr(new_rec, dd, old_rec[dd])
 
