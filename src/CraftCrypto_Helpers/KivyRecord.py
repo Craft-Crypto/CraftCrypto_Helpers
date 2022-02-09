@@ -28,3 +28,9 @@ class KivyRecord(EventDispatcher):
         for key in self.keys:
             new_rec[key] = getattr(self, key)
         return new_rec
+
+    def reset(self, *args):
+        my_id = self.my_id
+        self.set_record(BaseRecord().to_dict())
+        self.my_id = my_id
+
