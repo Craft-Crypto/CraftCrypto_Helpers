@@ -39,15 +39,20 @@ class BaseRecord:
 
     # Trade Details
     trade_amount: str = '0'
+    trade_price: str = '0'  # for Manual Buy/Sell
     buy_price: str = '0'
+    bought_price: str = '0'
     sold_price: str = '0'
     gl_per: str = '0'
     now_price: str = '0'
-    trade_id: str = '0'
-    buy_trade_id: str = '0'
-    sell_trade_id: str = '0'
+    trade_id: str = ''
+    buy_trade_id: str = ''
+    sell_trade_id: str = ''
+    buy_enabled: bool = True  # For Loop
+    sell_enabled: bool = True  # For Loop
     kind: str = ''  # market, limit, loop, strat name for basic, NEED TO PUT ADVANCED
     is_buy: bool = True  # false is sell
+    is_stop: bool = False
     ready_sell: bool = False  # for all the trading data
     leverage: str = '0'
     sell_now: bool = False
