@@ -40,6 +40,7 @@ class BaseRecord:
     # Trade Details
     trade_amount: str = '0'
     trade_price: str = '0'  # for Manual Buy/Sell
+    trade_done_price: str = '0'  # for Manual Buy/Sell
     buy_price: str = '0'
     bought_price: str = '0'
     sold_price: str = '0'
